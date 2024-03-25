@@ -1,4 +1,4 @@
-package com.example.imdb.ui.theme
+package com.example.imdb.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

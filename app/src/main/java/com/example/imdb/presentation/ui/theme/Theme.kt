@@ -1,4 +1,4 @@
-package com.example.imdb.ui.theme
+package com.example.imdb.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build
