@@ -21,49 +21,23 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.imdb.domain.utils.Result
+import com.example.imdb.presentation.navigation.NavGraph
+
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    private lateinit var navController: NavHostController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        val api = RemoteDataSouceInjector.ApiContainer
-//        val c = api.getInstance()
-//        val k = MovieRemoteDataSourceImpl(c)
-//        val r = MovieRepositoryImpl(k)
-
-//        GlobalScope.launch {
-//            val d= r.getPopularMovies()
-//            Log.d("Fetched API", d.toString())
-//        }
         setContent {
             IMDBTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting()
-                }
+
+                    navController = rememberNavController()
+                    NavGraph(navController = navController)
             }
         }
     }
 }
 
-@Composable
-fun Greeting(viewModel: HomeViewModel = hiltViewModel()) {
-    when (val movieResponse = viewModel.movieState.value) {
-//        is Result.Loading -> ProgressBar()
-        is Result.Success -> Log.d("Got movies", movieResponse.data.toString())
-//        is Result.Error -> Toast.makeText(
-//            Lxfre4szocalContext.current,
-//            stringResource(R.string.toast_error),
-//            Toast.LENGTH_SHORT
-//        )
-        is Result.Error -> {
-        }
-        is Result.Loading -> {
-
-        }
-        else -> {}
-    }
-}

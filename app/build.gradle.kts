@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.imdb"
-        minSdk = 24
+        minSdk = 25
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -22,6 +22,7 @@ android {
         }
 
         buildConfigField("String", "API_KEY", "\"85af18841ee7bd72e52ef405eca6c54a\"")
+        buildConfigField("String", "POSTER_URL", "\"https://image.tmdb.org/t/p/original\"")
     }
 
     buildTypes {
@@ -68,6 +69,9 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.logging.interceptor)
     implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.compose.material)
+    implementation(libs.coil)
+    implementation(libs.androidx.paging.common)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -75,6 +79,7 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation("io.coil-kt:coil-compose:2.4.0")
     implementation("com.google.dagger:hilt-android:2.51")
     kapt("com.google.dagger:hilt-android-compiler:2.51")
 }
