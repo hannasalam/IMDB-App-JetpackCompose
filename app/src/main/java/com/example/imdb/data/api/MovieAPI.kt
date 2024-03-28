@@ -10,6 +10,7 @@ interface MovieAPI {
     suspend fun getPopularMovies(
         @Query(
             "api_key"
-        )apiKey:String
+        )apiKey:String,
+        @Query("page") page: Int = 1,
     ): Response<MovieList>
 }

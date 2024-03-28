@@ -19,10 +19,13 @@ import androidx.compose.material3.Shapes
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import coil.compose.rememberAsyncImagePainter
 import coil.compose.rememberImagePainter
+import coil.request.ImageRequest
 import coil.size.Scale
 import com.example.imdb.BuildConfig
 import com.example.imdb.domain.model.Movie
@@ -45,6 +48,22 @@ fun MovieListItem(movie: Movie, onclick: ()->Unit) {
                     model = BuildConfig.POSTER_URL + movie.posterPath,
                     contentDescription = "The delasign logo",
                 )
+//                Image(
+//                    modifier = Modifier
+//                        .padding(
+//                            end = 4.dp,
+//                        )
+//                        .width(120.dp),
+//                    painter = rememberAsyncImagePainter(
+//                        ImageRequest.Builder(LocalContext.current)
+//                            .data(data = BuildConfig.POSTER_URL + movie.posterPath).apply(block = fun ImageRequest.Builder.() {
+//                                crossfade(true)
+//                                scale(Scale.FILL)
+//                            }).build()
+//                    ),
+//                    contentDescription = null,
+//                    contentScale = ContentScale.Crop
+//                )
 
             }
         }
